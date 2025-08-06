@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import DocumentUpload from './DocumentUpload';
 import DocumentList from './DocumentList';
@@ -6,6 +7,7 @@ import CVList from './CVList';
 
 const Dashboard = () => {
     const { user, getPlanInfo } = useAuth();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('overview');
     const [showFloatingMenu, setShowFloatingMenu] = useState(false);
     const [planInfo, setPlanInfo] = useState(null);
@@ -44,12 +46,12 @@ const Dashboard = () => {
 
     const handleCreateDefaultCV = () => {
         // Navigate to CV template selection page
-        window.location.href = '/dashboard/cv-templates';
+        navigate('/dashboard/cv-templates');
     };
 
     const handleCreateCVForURL = () => {
         // Navigate to URL-based CV creation page
-        window.location.href = '/dashboard/create-cv-url';
+        navigate('/dashboard/create-cv-url');
     };
 
     return (
@@ -206,11 +208,15 @@ const Dashboard = () => {
                                                             Start creating your professional CV with AI assistance.
                                                         </p>
                                                         <div className="d-grid gap-2">
-                                                            <button className="btn btn-light">
+                                                            <button className="btn btn-light" onClick={() => navigate('/dashboard/cv-templates')}>
                                                                 <i className="bi bi-plus-circle me-2"></i>
                                                                 Create New CV
                                                             </button>
-                                                            <button className="btn btn-outline-light">
+                                                            <button className="btn btn-outline-light" onClick={() => navigate('/dashboard/create-cv-url')}>
+                                                                <i className="bi bi-link-45deg me-2"></i>
+                                                                Create CV for URL
+                                                            </button>
+                                                            <button className="btn btn-outline-light" onClick={() => setActiveTab('cvs')}>
                                                                 <i className="bi bi-folder me-2"></i>
                                                                 View My CVs
                                                             </button>

@@ -625,3 +625,111 @@ main {
     box-shadow: none;
     outline: none;
 }
+
+/* Pricing Plans Styles */
+.pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card.border-primary {
+    border-width: 2px !important;
+}
+
+.pricing-price {
+    color: #495057;
+}
+
+.pricing-price .display-6 {
+    font-weight: 700;
+}
+
+.pricing-card .card-body {
+    padding: 2rem 1.5rem;
+}
+
+.pricing-card .list-unstyled li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.pricing-card .list-unstyled li:last-child {
+    border-bottom: none;
+}
+
+.pricing-card .list-unstyled li i {
+    font-size: 1.1rem;
+}
+
+/* Popular plan highlighting */
+.pricing-card.border-primary .card-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.pricing-card.border-primary .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+/* FAQ Section Styles */
+.faq-card {
+    border-radius: 10px;
+    border-left: 4px solid #007bff;
+    transition: box-shadow 0.2s ease;
+}
+
+.faq-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-card .card-title {
+    color: #495057;
+    font-weight: 600;
+}
+
+.faq-card .card-title i {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments for pricing */
+@media (max-width: 768px) {
+    .pricing-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .pricing-card .card-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .pricing-price .display-6 {
+        font-size: 2rem;
+    }
+}
+
+/* Home page specific styles */
+.home-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+}
+
+.home-features {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.home-features .bi {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
