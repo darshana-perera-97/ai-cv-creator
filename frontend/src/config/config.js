@@ -1,6 +1,7 @@
 // Backend API Configuration
 export const API_CONFIG = {
-    BASE_URL: process.env.REACT_APP_API_URL || 'http://localhost:5050/api',
+    BASE_URL: process.env.REACT_APP_API_URL || 'http://69.197.187.24:5050/api',
+    // BASE_URL: process.env.REACT_APP_API_URL || 'http://localhost:5050/api',
     ENDPOINTS: {
         AUTH: {
             REGISTER: '/auth/register',
