@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from './context/AuthContext';
+import { DocumentProvider } from './context/DocumentContext';
+import { CVProvider } from './context/CVContext';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <AuthProvider>
+        <DocumentProvider>
+          <CVProvider>
+            <App />
+          </CVProvider>
+        </DocumentProvider>
+      </AuthProvider>
+    </Router>
   </React.StrictMode>
 );
 

@@ -1,70 +1,159 @@
-# Getting Started with Create React App
+# AI CV Creator - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based frontend application for the AI CV Creator platform with user authentication and dashboard functionality.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- ✅ User registration with form validation
+- ✅ User login with authentication
+- ✅ Protected dashboard with user information
+- ✅ Responsive navigation with user dropdown
+- ✅ Bootstrap 5 styling with custom CSS
+- ✅ React Router for navigation
+- ✅ Context API for state management
+- ✅ JWT token authentication
+- ✅ Auto-login with token persistence
 
-### `npm start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Home Page (`/`)
+- Welcome message and call-to-action
+- Feature highlights
+- Navigation to login/register for unauthenticated users
+- Direct access to dashboard for authenticated users
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Register Page (`/register`)
+- User registration form with validation
+- Fields: First Name, Last Name, Username, Email, Password, Confirm Password
+- Password confirmation validation
+- Link to login page
 
-### `npm test`
+### 3. Login Page (`/login`)
+- User login form
+- Fields: Email, Password
+- Error handling for invalid credentials
+- Link to registration page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. Dashboard (`/dashboard`)
+- Protected route (requires authentication)
+- User information display
+- Quick action buttons
+- Getting started guide
+- User profile details
 
-### `npm run build`
+## Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Core Components
+- **AuthContext**: Manages authentication state and user data
+- **Navbar**: Navigation bar with user dropdown and logout
+- **ProtectedRoute**: Wrapper for authenticated-only pages
+- **Home**: Landing page with welcome message
+- **Login**: User login form
+- **Register**: User registration form
+- **Dashboard**: User dashboard with profile information
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Configuration
+- **config.js**: Centralized API configuration and helper functions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+1. Install dependencies:
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Start the development server:
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application will run on `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Dependencies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React**: Frontend framework
+- **React Router DOM**: Client-side routing
+- **Bootstrap**: CSS framework for styling
+- **Bootstrap Icons**: Icon library
+- **Axios**: HTTP client (for future API calls)
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/
+│   ├── Dashboard.js
+│   ├── Home.js
+│   ├── Login.js
+│   ├── Navbar.js
+│   ├── ProtectedRoute.js
+│   └── Register.js
+├── context/
+│   └── AuthContext.js
+├── config/
+│   └── config.js
+├── App.js
+├── App.css
+└── index.js
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authentication Flow
 
-### Code Splitting
+1. **Registration**: User fills out registration form → API call to backend → JWT token received → User logged in
+2. **Login**: User enters credentials → API call to backend → JWT token received → User logged in
+3. **Token Persistence**: JWT token stored in localStorage → Auto-login on page refresh
+4. **Protected Routes**: Check authentication status → Redirect to login if not authenticated
+5. **Logout**: Clear token and user data → Redirect to login page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## API Integration
 
-### Analyzing the Bundle Size
+The frontend integrates with the backend API at `http://localhost:5050/api`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `POST /auth/register` - User registration
+- `POST /auth/login` - User login
+- `GET /auth/profile` - Get user profile (protected)
 
-### Making a Progressive Web App
+## Styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Bootstrap 5**: Primary styling framework
+- **Custom CSS**: Additional styling in App.css
+- **Bootstrap Icons**: Icon library for UI elements
+- **Responsive Design**: Mobile-friendly layout
 
-### Advanced Configuration
+## Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Available Scripts
 
-### Deployment
+- `npm start` - Start development server
+- `npm build` - Build for production
+- `npm test` - Run tests
+- `npm eject` - Eject from Create React App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Environment Variables
 
-### `npm run build` fails to minify
+Create a `.env` file in the frontend directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+REACT_APP_API_URL=http://localhost:5050/api
+```
+
+## Backend Integration
+
+This frontend is designed to work with the Node.js/Express backend. Make sure the backend server is running on port 5050 before testing the frontend.
+
+## Security Features
+
+- JWT token authentication
+- Protected routes
+- Form validation
+- Secure password handling
+- Token expiration handling
+
+## Future Enhancements
+
+- CV creation interface
+- AI-powered content suggestions
+- Multiple CV templates
+- Export functionality (PDF, Word)
+- User profile management
+- Password reset functionality

@@ -1,38 +1,627 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding-bottom: 2rem;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn {
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.alert {
+  border-radius: 0.375rem;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item-text {
+  padding: 0.5rem 1rem;
+}
+
+.bi {
+  line-height: 1;
+}
+
+/* Floating Action Button Styles */
+.floating-action-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.fab-main {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.fab-main:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.6);
+  background: linear-gradient(135deg, #0b5ed7, #0a58ca);
 }
 
-@keyframes App-logo-spin {
+.fab-menu {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  min-width: 200px;
+  animation: slideInUp 0.3s ease;
+}
+
+.fab-item {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #333;
+  text-align: left;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.fab-item:hover {
+  background: #f8f9fa;
+  color: #0d6efd;
+  transform: translateX(5px);
+}
+
+.fab-item:first-child {
+  margin-bottom: 0.25rem;
+}
+
+@keyframes slideInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/* Responsive adjustments for floating button */
+@media (max-width: 768px) {
+  .floating-action-button {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .fab-main {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .fab-menu {
+    bottom: 60px;
+    min-width: 180px;
+  }
+}
+
+/* CV Template Selection Styles */
+.template-card {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.template-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.template-card.border-primary {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.preview-content {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 1px solid #dee2e6;
+}
+
+.preview-header h6 {
+  color: #495057;
+  margin-bottom: 0.25rem;
+}
+
+.preview-skills .badge {
+  font-size: 0.7rem;
+}
+
+/* CV Preview Styles */
+.cv-template {
+  background: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cv-header {
+  background: linear-gradient(135deg, var(--bs-primary), var(--bs-primary-rgb));
+}
+
+.cv-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.cv-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.cv-summary {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.cv-contact p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.cv-contact i {
+  width: 20px;
+  text-align: center;
+}
+
+.cv-content {
+  background: white;
+}
+
+.cv-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-company, .cv-institution, .cv-project-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.cv-position, .cv-degree {
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.cv-period {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.cv-description, .cv-project-description {
+  line-height: 1.6;
+  color: #495057;
+}
+
+.cv-skills .badge {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cv-additional p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cv-additional strong {
+  color: #2c3e50;
+}
+
+/* Template-specific styles */
+.cv-modern .cv-header {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+}
+
+.cv-creative .cv-header {
+  background: linear-gradient(135deg, #198754, #157347);
+}
+
+.cv-minimal .cv-header {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+}
+
+.cv-executive .cv-header {
+  background: linear-gradient(135deg, #212529, #343a40);
+}
+
+/* Print styles for CV */
+@media print {
+  .cv-template {
+    box-shadow: none;
+    border: none;
+  }
+  
+  .cv-header {
+    background: #0d6efd !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  .cv-section-title {
+    color: #0d6efd !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+/* CV List Styles */
+.cv-list .card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+.cv-list .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cv-list .card-header {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.cv-list .card-title {
+    font-weight: 600;
+    color: #495057;
+}
+
+.cv-list .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.cv-list .btn-group .btn {
+    border-radius: 0;
+    font-size: 0.875rem;
+}
+
+.cv-list .btn-group .btn:first-child {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+}
+
+.cv-list .btn-group .btn:last-child {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
+.cv-list .btn-group-vertical .btn-group {
+    margin-bottom: 0.5rem;
+}
+
+.cv-list .btn-group-vertical .btn-group:last-child {
+    margin-bottom: 0;
+}
+
+.cv-list .cover-letter-preview {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #6c757d;
+}
+
+.cv-list .cover-letter-preview::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(transparent, #f8f9fa);
+    pointer-events: none;
+}
+
+.cv-list .copy-success {
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.9); }
+}
+
+/* CV View Styles */
+.cv-view .cv-preview {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.cv-view .cv-header {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+}
+
+.cv-view .cv-section-title {
+  color: #0d6efd;
+  border-bottom-color: #0d6efd;
+}
+
+/* URL Analysis Styles */
+.url-analysis .chart-container {
+  position: relative;
+  height: 300px;
+  margin: 1rem 0;
+}
+
+.url-analysis .compatibility-score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+.url-analysis .job-info-card {
+  height: 100%;
+  border-left: 4px solid #0d6efd;
+}
+
+.url-analysis .compatibility-card {
+  height: 100%;
+  border-left: 4px solid #28a745;
+}
+
+.url-analysis .recommendations-card {
+  border-left: 4px solid #ffc107;
+}
+
+.url-analysis .matched-skills .badge {
+  background-color: #28a745 !important;
+}
+
+.url-analysis .missing-skills .badge {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.url-analysis .analysis-loading {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chart responsiveness */
+@media (max-width: 768px) {
+  .url-analysis .chart-container {
+    height: 250px;
+  }
+
+  .url-analysis .compatibility-score {
+    font-size: 2rem;
+  }
+}
+
+/* Plan Selection Styles */
+.plan-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.plan-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card.border-primary {
+  border-color: #0d6efd !important;
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+.plan-card .form-check-input {
+  margin-top: 0.5rem;
+}
+
+.plan-card .card-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.plan-card .card-text {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Account Details Page */
+.account-details-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-details-card .card-header {
+    border-radius: 15px 15px 0 0 !important;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.breadcrumb {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e9ecef;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.breadcrumb-item a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.usage-progress {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.usage-progress .progress-bar {
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.account-info-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.account-info-section h5 {
+    color: #495057;
+    font-weight: 600;
+}
+
+.info-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item strong {
+    color: #495057;
+    min-width: 120px;
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .account-details-card {
+        margin: 0 10px;
+    }
+    
+    .breadcrumb {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .plan-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Navbar Dropdown Styles */
+.navbar .dropdown-menu {
+    margin-top: 0;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.navbar .dropdown-menu.show {
+    display: block !important;
+}
+
+.navbar .dropdown-toggle::after {
+    margin-left: 0.5em;
+}
+
+.navbar .dropdown-item {
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.navbar .dropdown-item.text-danger:hover {
+    background-color: #f8d7da;
+}
+
+.navbar .dropdown-item-text {
+    padding: 0.5rem 1rem;
+    color: #6c757d;
+}
+
+.navbar .dropdown-divider {
+    margin: 0.5rem 0;
+    border-color: #e9ecef;
+}
+
+/* Ensure dropdown button looks like a nav link */
+.navbar .dropdown-toggle.nav-link {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar .dropdown-toggle.nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar .dropdown-toggle.nav-link:focus {
+    box-shadow: none;
+    outline: none;
 }
